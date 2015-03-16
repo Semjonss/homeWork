@@ -53,8 +53,10 @@ public class testSort {
 		
 		return (stop - start);
 	}
-	
-	
+/*	
+ * it's LSDsort, were data - is array to sort, and cout and sort_arr it's help arrays,
+ * 
+ */	
 	private static void sortLSD(int[] data, int[] count,int[] sort_arr){
 		int[] answer = new int[data.length];
 		for (int i = 0; i < 1; i++) {
