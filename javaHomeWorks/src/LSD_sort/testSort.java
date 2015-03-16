@@ -3,7 +3,9 @@ import java.util.Arrays;
 import java.util.Random;
 
 public class testSort {
-	private static final int MAX = 1000000; //numbers of arrays
+
+public class testSort {
+	private static final int MAX = 1000; //numbers of arrays
 	private static final int MAX_INT = Integer.MAX_VALUE;
 	private static final int SIZE_BYTE = 256;
 	
@@ -14,7 +16,9 @@ public class testSort {
 		
 		data = generateArr();//generate for LSD 
 		System.out.println("LSDsort = " + timer(data, 2));
-
+		for (int i = 0; i < data.length; i++) {
+			System.out.println(data[i]);
+		}
 	}
 	
 	
@@ -58,21 +62,20 @@ public class testSort {
  * 
  */	
 	private static void sortLSD(int[] data, int[] count,int[] sort_arr){
-		int[] answer = new int[data.length];
+		int[] help;
 		for (int i = 0; i < 4; i++) {
-			answer = countingSort(data, i, count, sort_arr);	
-			for (int j = 0; j < answer.length; j++) {
-				data[j] = answer[j];
-			}
+			sort_arr = countingSort(data, i, count, sort_arr);	
+			help = data;
+			data = sort_arr;
+			sort_arr = help;
 		}		
-	}
-	
+	}	
 	
 	/*
 	 * counting Sort, were date it's sort array, sort_arr it's it's output arrays, and 
 	 * byteIndex it's arrays for counting
 	 */
-	private	static int[] countingSort(int[] data, int byteIndex,  int[] count,int[] sort_arr){
+	private	static int[] countingSort(int[] data, int byteIndex,  int[] count, int[] sort_arr){
 
 		for (int i = 0; i < data.length; i++) {
 			count[intToByte(data[i], byteIndex) + 1]++;
@@ -92,7 +95,7 @@ public class testSort {
 	/*
 	 * 1 - it's the 1-8 bit's 2 - it's 9-16 bit's and so on
 	 */
-	private static int intToByte(int a, int byteIndex){ 
+	private static int intToByte(int a, int byteIndex){ 	
 		int answer;
 		switch(byteIndex){
 		case 0:
