@@ -14,7 +14,7 @@ public class testSort {
 		
 		data = generateArr();//generate for LSD 
 		System.out.println("LSDsort = " + timer(data, 2));
-		
+
 	}
 	
 	
@@ -59,12 +59,12 @@ public class testSort {
  */	
 	private static void sortLSD(int[] data, int[] count,int[] sort_arr){
 		int[] answer = new int[data.length];
-		for (int i = 0; i < 1; i++) {
+		for (int i = 0; i < 4; i++) {
 			answer = countingSort(data, i, count, sort_arr);	
-		}
-		for (int i = 0; i < answer.length; i++) {
-			data[i] = answer[i];
-		}
+			for (int j = 0; j < answer.length; j++) {
+				data[j] = answer[j];
+			}
+		}		
 	}
 	
 	
@@ -78,11 +78,14 @@ public class testSort {
 			count[intToByte(data[i], byteIndex) + 1]++;
 		}
 		for (int i = 0; i < count.length - 1; i++) {
-			count[i + 1] += count[i];			
+			count[i + 1] += count[i];	
 		}
 		for (int i = 0; i < data.length; i++) {
 			sort_arr[count[intToByte(data[i], byteIndex)]++] = data[i];	
 		}		
+		for (int i = 0; i < count.length; i++) {
+			count[i] = 0;
+		}
 		return sort_arr;
 	}
 	
