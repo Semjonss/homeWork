@@ -5,7 +5,7 @@ import java.util.Random;
 public class testSort {
 
 public class testSort {
-	private static final int MAX = 1000; //numbers of arrays
+	private static final int MAX = 1000000; //numbers of arrays
 	private static final int MAX_INT = Integer.MAX_VALUE;
 	private static final int SIZE_BYTE = 256;
 	
@@ -16,9 +16,6 @@ public class testSort {
 		
 		data = generateArr();//generate for LSD 
 		System.out.println("LSDsort = " + timer(data, 2));
-		for (int i = 0; i < data.length; i++) {
-			System.out.println(data[i]);
-		}
 	}
 	
 	
